@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />
-    <title>查帳小幫手</title>
+    <title>欠款查詢</title>
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -19,11 +19,11 @@
 	function initializeApp(data) {  //初始化LIFF
         var userid = data.context.userId;
         var groupid = data.context.groupId; //取得ID
-        document.getElementById('post_groupID').value = groupid;
+        document.getElementById('post_userID').value = userid;
 
 	}
     function pushMsg() {
-        var msg = '@刪除';
+        var msg = '@清空欠款';
         if (confirm("確認要刪除所有帳目？")){
         liff.sendMessages([  //推播訊息
 			{ type: 'text',
@@ -192,11 +192,11 @@ th{
 <div align="center">
     <ul>
         <li><img src="https://imgur.com/JV8bflw.png" width=100px height=auto align=center></img></li>
-        <li><h1 style="line-height:100px;"><strong>查帳</strong></h1></li>
+        <li><h1 style="line-height:100px;"><strong>欠款查詢</strong></h1></li>
     </ul>        
     <div class="di">
         <p class="text-background" align="left" style="font-size:18px;">
-            <strong> &nbsp目前帳目：</strong>
+            <strong> &nbsp目前欠款記錄：</strong>
             <a href="javascript:divShow();" id="btnhref">檢視清單</a>
             </p>
     </div>
@@ -216,6 +216,7 @@ document.getElementById("btnhref").href ="javascript:divShow()";
         <table>
             <thead align="center">
                 <th >編號</th>
+                <th >人名</th>
                 <th>項目</th>
                 <th>金額</th>
             </thead>
@@ -223,6 +224,7 @@ document.getElementById("btnhref").href ="javascript:divShow()";
                 {% for _data in save_list %}
                     <tr>
                         <td align="center">{{ _data.number }}</td>
+                        <td>{{ _data.debtPerson }}</td>
                         <td>{{ _data.message }}</td>
                         <td>{{ _data.account }}</td>
                     </tr>
@@ -234,7 +236,7 @@ document.getElementById("btnhref").href ="javascript:divShow()";
         <script>
             function deleteOption(list){
                 var index=list.selectedIndex;
-                var msg = '@delete';
+                var msg = '@remove';
                 msg=msg+index;
             if(index>0 && confirm("確認要刪除？")){        
                 liff.sendMessages([  
@@ -275,43 +277,9 @@ document.getElementById("btnhref").href ="javascript:divShow()";
             </div>
         <br/>
         <div class="di"><p class="text-background" align="left" style="font-size:18px;"><strong> &nbsp目前消費統計：</strong></p></div>
-        <p>累積花費{{ result }}</p>
+        <!-- <p>累積花費{{ result }}</p> -->
 
-            <!-- <img src="{{ img }}"></img> -->
-    <canvas id="myChart" width="100" height="70">
-    </canvas>
-<script>
-    var ctx = document.getElementById("myChart").getContext('2d');
-        var Pie_data = {{ pie_data|tojson }};
-    var Pie_category = {{ pie_category|tojson }};
-var myChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels:Pie_category,
-        datasets: [{            
-            data: Pie_data,
-            backgroundColor: [
-             'rgba(255, 159, 64, 0.7)',
-             'rgba(75, 192, 192, 0.7)',
-             'rgba(255, 206, 86, 0.7)',
-             'rgba(54, 162, 235, 0.7)',
-             'rgba(153, 102, 255, 0.7)',
-             'rgba(255, 99, 132, 0.7)'
-             ],
-           borderColor: [
-             'rgba(255, 159, 64, 1)',
-             'rgba(75, 192, 192, 1)',
-             'rgba(255, 206, 86, 1)',
-             'rgba(54, 162, 235, 1)',
-             'rgba(153, 102, 255, 1)',
-             'rgba(255, 99, 132, 1)'
-             ],
-            borderWidth: 2
-        }]
-    },
-    options: {}
-});
-</script>
+
 <br/>
 </div>
 </body>
