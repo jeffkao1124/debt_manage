@@ -64,7 +64,7 @@ def index():
             save_dic['account'] = _Data.account
             save_dic['message'] = _Data.message
             save_dic['debtPerson'] ="欠/"+str(_Data.group_num)
-            save_dic['debtStatus'] = _data.status
+            save_dic['debtStatus'] = _Data.status
             save_list.append(save_dic)
             save_dic = {}
         for _Data in data_BorrowData:
@@ -73,7 +73,7 @@ def index():
             save_dic['account'] = _Data.account
             save_dic['message'] = _Data.message
             save_dic['debtPerson'] ="借/"+str(_Data.group_num)
-            save_dic['debtStatus'] = _data.status
+            save_dic['debtStatus'] = _Data.status
             save_list.append(save_dic)
             save_dic = {}
 
