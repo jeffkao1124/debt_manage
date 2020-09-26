@@ -216,16 +216,16 @@ document.getElementById("btnhref").href ="javascript:divShow()";
         <table>
             <thead align="center">
                 <th >編號</th>
-                <th >人名</th>
-                <th>項目</th>
+                <th >項目</th>
+                <th>人名</th>
                 <th>金額</th>
             </thead>
             <tbody>
                 {% for _data in save_list %}
                     <tr>
                         <td align="center">{{ _data.number }}</td>
-                        <td>{{ _data.debtPerson }}</td>
                         <td>{{ _data.message }}</td>
+                        <td>{{ _data.debtPerson }}</td>
                         <td>{{ _data.account }}</td>
                     </tr>
                 {% endfor%}
@@ -278,6 +278,7 @@ document.getElementById("btnhref").href ="javascript:divShow()";
         <br/>
         <div class="di"><p class="text-background" align="left" style="font-size:18px;"><strong> &nbsp目前消費統計：</strong></p></div>
         <!-- <p>累積花費{{ result }}</p> -->
+        <p><strong>{{person_total}}</strong></p>
 
 
 <br/>
