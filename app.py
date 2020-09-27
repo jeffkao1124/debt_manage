@@ -87,9 +87,9 @@ def index():
                 msgStatus = str(save_list[j]['debtStatus'])
                 if debtPerson == historyPerson:
                     if msgStatus == "owe":
-                        total -= int(history_list[j]['Account'])
+                        total -= int(save_list[j]['Account'])
                     if msgStatus == "borrow":
-                        total += int(history_list[j]['Account'])
+                        total += int(save_list[j]['Account'])
             if total > 0:
                 person_total += '我共借'+str(debtPerson)+str(total)+'元'+'\n'
             if total < 0:
