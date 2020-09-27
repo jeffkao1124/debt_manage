@@ -77,7 +77,12 @@ def index():
             save_list.append(save_dic)
             save_dic = {}
 
+        print(save_list)
+        sys.stdout.flush()
+
         debtPerson_list=get_debtPeople(2)
+        print(debtPerson_list)
+        sys.stdout.flush()
         person_total=''
         total = 0
         for i in range(get_debtPeople(1)):
