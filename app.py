@@ -77,12 +77,17 @@ def index():
             save_list.append(save_dic)
             save_dic = {}
 
-        print(save_list)
-        sys.stdout.flush()
+        # total = 0
+        # final_list =[]
+        # for i in range(len(save_list)):
+        #     msgStatus = str(save_list[i]['debtStatus'])
+        #     if msgStatus == "owe":
+        #         showStatus ="我欠"
+        #     if msgStatus == "borrow":
+        #         showStatus ="我借"            
+        #     final_list.append(str(showStatus)+str(history_list[i]['debtPerson'])+str(history_list[i]['Mesaage'])+str(history_list[i]['Account'])+'元')
 
         debtPerson_list=get_debtPeople(2)
-        print(debtPerson_list)
-        sys.stdout.flush()
         person_total=''
         total = 0
         for i in range(get_debtPeople(1)):
@@ -97,10 +102,16 @@ def index():
                         total += int(save_list[j]['Account'])
             if total > 0:
                 person_total += '我共借'+str(debtPerson)+str(total)+'元'+'\n'
-            if total < 0:
+            elif total < 0:
                 total=abs(total)
                 person_total += '我共欠'+str(debtPerson)+str(total)+'元'+'\n'
+            else:
+                person_total += '我不欠'+str(debtPerson)+','+str(debtPerson)+'不欠我'+'\n'
             total = 0
+
+        print(save_list)
+        sys.stdout.flush()
+
         print(person_total)
         sys.stdout.flush()
       
