@@ -100,6 +100,8 @@ def index():
                         total -= int(save_list[j]['account'])
                     if msgStatus == "borrow":
                         total += int(save_list[j]['account'])
+            print(total)
+            sys.stdout.flush()
             if total > 0:
                 person_total += '我共借'+str(debtPerson)+str(total)+'元'+'\n'
             elif total < 0:
