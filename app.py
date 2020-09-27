@@ -79,6 +79,7 @@ def index():
 
         debtPerson_list=get_debtPeople(2)
         person_total=[]
+        account_total=[]
         total = 0
         for i in range(get_debtPeople(1)):
             debtPerson = str(debtPerson_list[i])        
@@ -91,8 +92,7 @@ def index():
                         total -= int(save_list[j]['account'])
                     if msgStatus == "borrow":
                         total += int(save_list[j]['account'])
-            print(total)
-            sys.stdout.flush()
+            account_total.append(total)
             if total > 0:
                 person_total.append('共借'+str(debtPerson)+str(total)+'元')
             if total < 0:

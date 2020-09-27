@@ -277,6 +277,48 @@ document.getElementById("btnhref").href ="javascript:divShow()";
             </div>
         <br/>
         <div class="di"><p class="text-background" align="left" style="font-size:18px;"><strong> &nbsp目前消費統計：</strong></p></div>
+        <div style="width:350px;">
+            <canvas id="myChart" width="1" height="1"></canvas>
+          </div>
+        
+              <script>
+            var ctx=document.getElementById('myChart').getContext('2d');
+            var Account_list = {{ account_total|tojson }};
+            var Person_list = {{ person_total|tojson }};
+            var myChart=new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: Person_list,
+                datasets: [{
+                    label:'欠款/借款金額(NTD)',
+                    data: Account_list,
+                   borderWidth: 1
+                   }]
+                },
+              options: {
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                    beginAtZero: true
+                    }
+                  }]
+                }
+              },
+               plugins: [{
+              beforeDraw: function(c) {
+                 var data = c.data.datasets[0].data;
+                 for (let i in data) {
+                    let bar = c.data.datasets[0]._meta['0'].data[i]._model;
+                    if (data[i] > 0) {
+                       bar.backgroundColor = '#d4e2ff';
+                    } else bar.backgroundColor = '#ffd4d4';
+                 }
+              }
+           }]
+            });
+          </script>
+        <br/>
+
         {% for _data in person_total %}
         <p><strong>{{ _data }}</strong></p>
         {% endfor %}
