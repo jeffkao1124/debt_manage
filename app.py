@@ -96,6 +96,8 @@ def index():
                 total=abs(total)
                 person_total += '我共欠'+str(debtPerson)+str(total)+'元'+'\n'
             total = 0
+        print(person_total)
+        sys.stdout.flush()
       
         
         return render_template('index_form.html',**locals())
