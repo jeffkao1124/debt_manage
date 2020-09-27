@@ -277,8 +277,9 @@ document.getElementById("btnhref").href ="javascript:divShow()";
             </div>
         <br/>
         <div class="di"><p class="text-background" align="left" style="font-size:18px;"><strong> &nbsp目前消費統計：</strong></p></div>
-        <!-- <p>累積花費{{ result }}</p> -->
-        <p><strong>{{person_total}}</strong></p>
+        {% for _data in person_total %}
+        <p><strong>{{ _data }}</strong></p>
+        {% endfor %}
 
 
 <br/>
