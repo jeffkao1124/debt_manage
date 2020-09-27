@@ -93,7 +93,8 @@ def index():
         for i in range(get_debtPeople(1)):
             debtPerson = str(debtPerson_list[i])        
             for j in range(len(save_list)):
-                historyPerson = str(save_list[j]['debtPerson'])
+                originPerson = str(save_list[j]['debtPerson'])
+                historyPerson = originPerson.split('/',1)[1]
                 msgStatus = str(save_list[j]['debtStatus'])
                 if debtPerson == historyPerson:
                     if msgStatus == "owe":
