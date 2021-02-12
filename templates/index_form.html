@@ -190,13 +190,11 @@ th{
 <body style="background-color:#FFEEDD;">
 
 <div align="center">
-    <ul>
-        <li><img src="{{url_for('static', filename='images/logo.jpg')}}" width=100px height=auto align=center></img></li>
-        <li><h1 style="line-height:100px;"><strong>欠款查詢</strong></h1></li>
-    </ul> 
+    <br><img src="{{url_for('static', filename='images/logo.png')}}" width="200px"align="center"><h6><p><strong style="color:#634b34">ACCOUNT ON ME , COUNT ON ME</strong></p><br>
+
 
     <div class="di">
-        <p class="text-background" align="left" style="font-size:18px;">
+        <p class="text-background" align="left" style="font-size:18px;background-color:#fff9c4;">
             <strong> &nbsp目前欠款記錄：</strong>
             <a href="javascript:divShow();" id="btnhref">檢視清單</a>
             </p>
@@ -277,7 +275,7 @@ document.getElementById("btnhref").href ="javascript:divShow()";
             
             </div>
         <br/>
-        <div class="di"><p class="text-background" align="left" style="font-size:18px;"><strong> &nbsp目前欠款統計：</strong></p></div>
+        <div class="di"><p class="text-background" align="left" style="font-size:18px;background-color:#fff9c4;""><strong> &nbsp目前欠款統計：</strong></p></div>
         <div style="width:350px;">
             <canvas id="myChart" width="1" height="1"></canvas>
           </div>
