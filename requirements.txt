@@ -12,5 +12,5 @@ jinja2
 datetime
 numpy
 line-bot-sdk==1.14.0
-APScheduler==3.6.1
 matplotlib
+APScheduler
